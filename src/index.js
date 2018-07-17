@@ -1,5 +1,4 @@
 export { getActiveFeatures } from './get-active-features';
-export { updateFeaturesWithQuery } from './update-features-with-query';
 export { mergeFeatures } from './merge-features';
 export { isActive } from './is-active';
 export { getQueryFeatures } from './get-query-features';

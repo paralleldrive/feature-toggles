@@ -1,6 +1,5 @@
 import '../src/get-active-features.test.js';
 import '../src/get-is-enabled.test.js';
-import '../src/update-features-with-query.test.js';
 import '../src/is-active.test.js';
 import '../src/merge-features.test.js';
 import '../src/get-query-features.test.js';
