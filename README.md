@@ -144,7 +144,7 @@ getBrowserQueryFeatures(search); // ['foo', 'bar', 'baz']
 
 #### getCurrentActiveFeatures
 
-Takes an array of initialFeatures, a req object, and a `window.location.search` string and returns an array of active Features. If search is not provided will grab the global `window.location.search` if available.
+Takes an array of initialFeatures, a req object, and a `window.location.search` string and returns an array of active feature names. If search is not provided will grab the global `window.location.search` if available.
 
 `({ initialFeatures = [...Feature], req? , search? }) => [...String])]`
 
