@@ -1,6 +1,4 @@
 declare module '@paralleldrive/feature-toggles' {
-  import * as React from 'react';
-
   interface Feature {
     readonly name: string;
     readonly isActive: boolean;
