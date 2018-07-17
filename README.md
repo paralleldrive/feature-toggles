@@ -8,6 +8,48 @@ Low-level feature toggle tools for Node and browsers.
 npm install --save @paralleldrive/feature-toggles
 ```
 
+## Use it
+
+```js
+import {
+  getActiveFeatures,
+  getCurrentActiveFeatures,
+  isActive
+} from '@paralleldrive/feature-toggles';
+
+const initialFeatures = [
+  {
+    name: 'comments',
+    isActive: true
+  },
+  {
+    name: 'ratings',
+    isActive: false
+  },
+  {
+    name: 'faq',
+    isActive: false
+  }
+];
+
+const activeFeatures = getActiveFeatures(initialFeatures);
+
+const getIsCommentsActive = isActive('comments');
+const getIsRatingsActive = isActive('ratings');
+const getIsFAQActive = isActive('faq');
+
+// Update active features with query
+const query = { ft: 'ratings' };
+const currentActiveFeatures = getCurrentActiveFeatures({
+  initialFeatures: activeFeatures,
+  query
+});
+
+const isCommentsActive = getIsCommentsActive(currentActiveFeatures); // true
+const isRatingsActive = getIsRatingsActive(currentActiveFeatures); // true ( enabled via query object )
+const isFAQActive = getIsFAQActive(currentActiveFeatures); // false
+```
+
 ## API
 
 ### Interfaces
