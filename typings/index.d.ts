@@ -49,7 +49,7 @@ declare module '@paralleldrive/feature-toggles' {
   export { getBrowserQueryFeatures };
 
   function getCurrentActiveFeatures(obj: {
-    readonly initialFeatures: ReadonlyArray<string>;
+    readonly initialFeatures: ReadonlyArray<Feature>;
     readonly req?: Req;
     readonly search?: string;
   }): ReadonlyArray<string>;
