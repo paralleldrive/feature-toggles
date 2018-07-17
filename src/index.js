@@ -7,3 +7,4 @@ export { removeFeatures } from './remove-features';
 export { getReqQueryFeatures } from './get-req-query-features';
 export { getCurrentActiveFeatures } from './get-current-active-features';
 export { getBrowserQueryFeatures } from './get-browser-query-features';
+export { createExpressMiddleware } from './create-express-middleware';

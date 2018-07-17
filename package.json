@@ -41,13 +41,15 @@
   "pre-commit": [
     "lint",
     "pretty-quick",
-    "test"
+    "test-unit",
+    "test-integration"
   ],
   "scripts": {
     "lint": "eslint src && echo '-- linting finished --'",
     "build": "babel src -d dist",
     "prettier": "prettier --write 'src/**/*.js'",
-    "test": "tape -r babel-register -r babel-polyfill test/unit.js",
+    "test-unit": "tape -r babel-register -r babel-polyfill test/unit.js",
+    "test-integration": "tape -r babel-register -r babel-polyfill test/integration",
     "watch": "watch 'reset && npm run --silent test' src",
     "precommit-msg": "echo 'Pre-commit checks...' && exit 0",
     "pretty-quick": "pretty-quick --staged",
