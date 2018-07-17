@@ -22,17 +22,27 @@ const initialFeatures = [
     name: 'ratings',
     isActive: false,
   },
+  {
+    name: 'faq',
+    isActive: false,
+  },
 ];
 
-const activeFeatures = getCurrentActiveFeatures(getActiveFeatures({ initialFeatures }))
+const activeFeatures = getActiveFeatures(initialFeatures)
 
 const getIsCommentsFeatureActive = isActive('comments')
+const getIsRatingsFeatureActive = isActive('ratings')
+const getIsFAQFeatureActive = isActive('faq')
 
-const isCommentsFeatureActive = getIsCommentsFeatureActive(activeFeatures) // true
 
-const getIsRatingsFeatureActive = isActive('comments')
+// Update active features with query
+const query = { ft: 'ratings' }
+const currentActiveFeatures = getCurrentActiveFeatures(activeFeatures, query)
 
-const isRatingsFeatureActive = getIsRatingsFeatureActive(activeFeatures) // false
+
+const isCommentsFeatureActive = getIsCommentsFeatureActive(currentActiveFeatures) // true
+const isRatingsFeatureActive = getIsRatingsFeatureActive(currentActiveFeatures) // true ( enabled via query object )
+const isFAQFeatureActive = getIsFAQFeatureActive(currentActiveFeatures) // false
 
 ```
 
