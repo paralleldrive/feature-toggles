@@ -1,0 +1,69 @@
+{
+  "name": "feature-toggles",
+  "version": "1.0.0",
+  "description": "Low-level feature toggle tools for Node and browsers.",
+  "main": "dist/index.js",
+  "types": "typings/index.d.ts",
+  "engines": {
+    "node": ">=8.3"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/paralleldrive/feature-toggles.git"
+  },
+  "devDependencies": {
+    "babel-cli": "6.26.0",
+    "babel-eslint": "8.2.3",
+    "babel-polyfill": "6.26.0",
+    "babel-preset-env": "1.7.0",
+    "babel-preset-stage-2": "6.24.1",
+    "babel-register": "6.26.0",
+    "deep-freeze": "0.0.1",
+    "eslint": "4.19.1",
+    "eslint-config-prettier": "2.9.0",
+    "express": "4.16.3",
+    "husky": "0.14.3",
+    "pre-commit": "1.2.2",
+    "prettier": "1.13.5",
+    "pretty-quick": "1.6.0",
+    "prop-types": "15.6.2",
+    "riteway": "2.0.4",
+    "supertest": "3.1.0",
+    "tape": "4.9.1",
+    "updtr": "2.0.0",
+    "watch": "1.0.2"
+  },
+  "dependencies": {
+    "lodash": "4.17.10",
+    "ramda": "0.25.0",
+    "url-parse": "1.4.1"
+  },
+  "pre-commit": [
+    "lint",
+    "pretty-quick",
+    "test-unit",
+    "test-integration"
+  ],
+  "scripts": {
+    "lint": "eslint src && echo '-- linting finished --'",
+    "build": "babel src -d dist",
+    "prettier": "prettier --write 'src/**/*.js'",
+    "test-unit": "tape -r babel-register -r babel-polyfill test/unit.js",
+    "test-integration": "tape -r babel-register -r babel-polyfill test/integration",
+    "watch": "watch 'reset && npm run --silent test' src",
+    "precommit-msg": "echo 'Pre-commit checks...' && exit 0",
+    "pretty-quick": "pretty-quick --staged",
+    "prepare": "npm run build",
+    "update": "updtr"
+  },
+  "keywords": [
+    "feature",
+    "toggles"
+  ],
+  "author": "Parallel Drive, Inc",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/paralleldrive/feature-toggles/issues"
+  },
+  "homepage": "https://github.com/paralleldrive/feature-toggles#readme"
+}
