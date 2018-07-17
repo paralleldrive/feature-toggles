@@ -8,6 +8,35 @@ Low-level feature toggle tools for Node and browsers.
 npm install --save @paralleldrive/feature-toggles
 ```
 
+## Use it
+
+```
+import { getActiveFeatures, getCurrentActiveFeatures } from '@paralleldrive/feature-toggles'
+
+const initialFeatures = [
+  {
+    name: 'comments',
+    isActive: true
+  },
+  {
+    name: 'comment-rating',
+    isActive: true,
+    dependencies: ['comments']
+  },
+  {
+    name: 'comment-rating-graph',
+    isActive: true,
+    dependencies: ['comment-rating']
+  }
+];
+
+const activeFeatures = getCurrentActiveFeatures(getActiveFeatures(initialFeatures))
+
+
+
+```
+
+
 ## API
 
 ### Interfaces
