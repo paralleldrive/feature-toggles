@@ -32,22 +32,20 @@ const initialFeatures = [
   }
 ];
 
-const activeFeatures = getActiveFeatures(initialFeatures);
+const req = { query: { ft: 'ratings' } };
+
+const activeFeatures = getCurrentActiveFeatures({
+  initialFeatures,
+  req
+});
 
 const getIsCommentsActive = isActive('comments');
 const getIsRatingsActive = isActive('ratings');
 const getIsFAQActive = isActive('faq');
 
-// Update active features with req query object
-const req = { query: { ft: 'ratings' } };
-const currentActiveFeatures = getCurrentActiveFeatures({
-  initialFeatures: activeFeatures,
-  req
-});
-
-const isCommentsActive = getIsCommentsActive(currentActiveFeatures); // true
-const isRatingsActive = getIsRatingsActive(currentActiveFeatures); // true ( enabled via req query object )
-const isFAQActive = getIsFAQActive(currentActiveFeatures); // false
+const isCommentsActive = getIsCommentsActive(activeFeatures); // true
+const isRatingsActive = getIsRatingsActive(activeFeatures); // true ( enabled via req query object )
+const isFAQActive = getIsFAQActive(activeFeatures); // false
 ```
 
 ## API
@@ -149,17 +147,23 @@ getBrowserQueryFeatures(search); // ['foo', 'bar', 'baz']
 
 Takes an array of initialFeatures, a req object, and a `window.location.search` string and returns an array of active Features. If search is not provided will grab the global `window.location.search` if available.
 
-`({ initialFeatures = [...String], req? , search? }) => [...String])]`
+`({ initialFeatures = [...Feature], req? , search? }) => [...String])]`
 
 ```js
-const initialFeatures = ['cat', 'bar'];
-const req = {
-    query:{
-      ft='fiz,bat,help'
-    }
-  };
-const search = '?ft=foo,bar,baz';
+const initialFeatures = [
+  { name: 'foo', isActive: true },
+  { name: 'bar', isActive: false },
+  { name: 'baz', isActive: false },
+  { name: 'other': isActive: false }
+]
 
-getCurrentActiveFeatures({ initialFeatures, req, search }); // ['cat', 'bar', 'fiz', 'bat', 'help', 'foo', 'baz']
-getCurrentActiveFeatures({ initialFeatures }); // -> parses the `window.location.search` string if present if not -> ['cat', 'bar']
+getCurrentActiveFeatures({ initialFeatures }); // ['foo']
+
+const req = {
+  query:{
+    ft='bar,baz'
+  }
+};
+
+getCurrentActiveFeatures({ initialFeatures, req }); // ['foo', 'bar', 'baz']
 ```
