@@ -11,7 +11,11 @@ npm install --save @paralleldrive/feature-toggles
 ## Use it
 
 ```js
-import { getActiveFeatures, getCurrentActiveFeatures, isActive } from '@paralleldrive/feature-toggles'
+import {
+  getActiveFeatures,
+  getCurrentActiveFeatures,
+  isActive
+} from '@paralleldrive/feature-toggles';
 
 const initialFeatures = [
   {
@@ -20,32 +24,30 @@ const initialFeatures = [
   },
   {
     name: 'ratings',
-    isActive: false,
+    isActive: false
   },
   {
     name: 'faq',
-    isActive: false,
-  },
+    isActive: false
+  }
 ];
 
-const activeFeatures = getActiveFeatures(initialFeatures)
+const activeFeatures = getActiveFeatures(initialFeatures);
 
-const getIsCommentsFeatureActive = isActive('comments')
-const getIsRatingsFeatureActive = isActive('ratings')
-const getIsFAQFeatureActive = isActive('faq')
-
+const getIsCommentsFeatureActive = isActive('comments');
+const getIsRatingsFeatureActive = isActive('ratings');
+const getIsFAQFeatureActive = isActive('faq');
 
 // Update active features with query
-const query = { ft: 'ratings' }
-const currentActiveFeatures = getCurrentActiveFeatures(activeFeatures, query)
+const query = { ft: 'ratings' };
+const currentActiveFeatures = getCurrentActiveFeatures(activeFeatures, query);
 
-
-const isCommentsFeatureActive = getIsCommentsFeatureActive(currentActiveFeatures) // true
-const isRatingsFeatureActive = getIsRatingsFeatureActive(currentActiveFeatures) // true ( enabled via query object )
-const isFAQFeatureActive = getIsFAQFeatureActive(currentActiveFeatures) // false
-
+const isCommentsFeatureActive = getIsCommentsFeatureActive(
+  currentActiveFeatures
+); // true
+const isRatingsFeatureActive = getIsRatingsFeatureActive(currentActiveFeatures); // true ( enabled via query object )
+const isFAQFeatureActive = getIsFAQFeatureActive(currentActiveFeatures); // false
 ```
-
 
 ## API
 
