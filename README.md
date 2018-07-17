@@ -10,8 +10,8 @@ npm install --save @paralleldrive/feature-toggles
 
 ## Use it
 
-```
-import { getActiveFeatures, getCurrentActiveFeatures } from '@paralleldrive/feature-toggles'
+```js
+import { getActiveFeatures, getCurrentActiveFeatures, isActive } from '@paralleldrive/feature-toggles'
 
 const initialFeatures = [
   {
@@ -19,20 +19,20 @@ const initialFeatures = [
     isActive: true
   },
   {
-    name: 'comment-rating',
-    isActive: true,
-    dependencies: ['comments']
+    name: 'ratings',
+    isActive: false,
   },
-  {
-    name: 'comment-rating-graph',
-    isActive: true,
-    dependencies: ['comment-rating']
-  }
 ];
 
-const activeFeatures = getCurrentActiveFeatures(getActiveFeatures(initialFeatures))
+const activeFeatures = getCurrentActiveFeatures(getActiveFeatures({ initialFeatures }))
 
+const getIsCommentsFeatureActive = isActive('comments')
 
+const isCommentsFeatureActive = getIsCommentsFeatureActive(activeFeatures) // true
+
+const getIsRatingsFeatureActive = isActive('comments')
+
+const isRatingsFeatureActive = getIsRatingsFeatureActive(activeFeatures) // false
 
 ```
 
