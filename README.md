@@ -38,15 +38,15 @@ const getIsCommentsActive = isActive('comments');
 const getIsRatingsActive = isActive('ratings');
 const getIsFAQActive = isActive('faq');
 
-// Update active features with query
-const query = { ft: 'ratings' };
+// Update active features with req query object
+const req = { query: { ft: 'ratings' } };
 const currentActiveFeatures = getCurrentActiveFeatures({
   initialFeatures: activeFeatures,
-  query
+  req
 });
 
 const isCommentsActive = getIsCommentsActive(currentActiveFeatures); // true
-const isRatingsActive = getIsRatingsActive(currentActiveFeatures); // true ( enabled via query object )
+const isRatingsActive = getIsRatingsActive(currentActiveFeatures); // true ( enabled via req query object )
 const isFAQActive = getIsFAQActive(currentActiveFeatures); // false
 ```
 
