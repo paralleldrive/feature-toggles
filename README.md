@@ -12,7 +12,6 @@ npm install --save @paralleldrive/feature-toggles
 
 ```js
 import {
-  getActiveFeatures,
   getCurrentActiveFeatures,
   isActive
 } from '@paralleldrive/feature-toggles';
