@@ -13,11 +13,7 @@ declare module '@paralleldrive/feature-toggles' {
     readonly query: Query;
   }
 
-  interface CurrentActiveFeatures {
-    readonly initialFeatures: ReadonlyArray<string>;
-    readonly req?: Req;
-    readonly search?: string;
-  }
+
 
   function getActiveFeatures(
     features: ReadonlyArray<Feature>
@@ -53,9 +49,14 @@ declare module '@paralleldrive/feature-toggles' {
 
   function getBrowserQueryFeatures(search?: string): ReadonlyArray<string>;
   export { getBrowserQueryFeatures };
-
-  function getCurrentActiveFeatures(
-    obj: CurrentActiveFeatures
-  ): ReadonlyArray<string>;
+  
+  type CurrentActiveFeatures = {
+    readonly initialFeatures: ReadonlyArray<string>;
+    readonly req?: Req;
+    readonly search?: string;
+  }
+  function getCurrentActiveFeatures({
+    initialFeatures, req, search
+  }: CurrentActiveFeatures ): ReadonlyArray<string>;
   export { getCurrentActiveFeatures };
 }
