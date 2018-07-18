@@ -42,15 +42,11 @@ const activeFeatures = getCurrentActiveFeatures({
   req
 });
 
-const getIsCommentsActive = isActive('comments');
-const getIsRatingsActive = isActive('ratings');
-const getIsFAQActive = isActive('faq');
-const getIsHelpActive = isActive('help');
+const isCommentsActive = isActive('comments', activeFeatures); // true
+const isRatingsActive = isActive('ratings', activeFeatures); // true ( enabled via req query object )
+const isFAQActive = isActive('faq', activeFeatures); // false
+const isHelpActive = isActive('help', activeFeatures); true ( enabled via req query object )
 
-const isCommentsActive = getIsCommentsActive(activeFeatures); // true
-const isRatingsActive = getIsRatingsActive(activeFeatures); // true ( enabled via req query object )
-const isFAQActive = getIsFAQActive(activeFeatures); // false
-const isHelpActive = getIsHelpActive(activeFeatures); // true { enabled via req query object }
 ```
 
 ## API
