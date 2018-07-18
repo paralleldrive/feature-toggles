@@ -45,7 +45,7 @@ const activeFeatures = getCurrentActiveFeatures({
 const isCommentsActive = isActive('comments', activeFeatures); // true
 const isRatingsActive = isActive('ratings', activeFeatures); // true ( enabled via req query object )
 const isFAQActive = isActive('faq', activeFeatures); // false
-const isHelpActive = isActive('help', activeFeatures); true ( enabled via req query object )
+const isHelpActive = isActive('help', activeFeatures); // true ( enabled via req query object )
 
 ```
 
