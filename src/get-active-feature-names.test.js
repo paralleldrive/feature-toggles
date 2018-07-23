@@ -1,27 +1,27 @@
 import { describe } from 'riteway';
 import deepFreeze from 'deep-freeze';
 
-import { getActiveFeatures } from './get-active-features';
+import { getActiveFeatureNames } from './get-active-feature-names';
 
-describe('getActiveFeatures()', async should => {
+describe('getActiveFeatureNames()', async should => {
   const { assert } = should('return an empty array');
   assert({
     given: 'no arguments',
-    actual: getActiveFeatures(),
+    actual: getActiveFeatureNames(),
     expected: []
   });
 });
 
-describe('getActiveFeatures([])', async should => {
+describe('getActiveFeatureNames([])', async should => {
   const { assert } = should('return an empty array');
   assert({
     given: 'an empty array',
-    actual: getActiveFeatures(),
+    actual: getActiveFeatureNames(),
     expected: []
   });
 });
 
-describe('getActiveFeatures([...Feature])', async should => {
+describe('getActiveFeatureNames([...Feature])', async should => {
   const { assert } = should();
   const features = [
     {
@@ -72,7 +72,7 @@ describe('getActiveFeatures([...Feature])', async should => {
   assert({
     given: 'an array of features',
     should: 'return the correct active features',
-    actual: getActiveFeatures(features),
+    actual: getActiveFeatureNames(features),
     expected: ['posts', 'comments', 'comment-rating', 'comment-rating-graph']
   });
 });

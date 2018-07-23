@@ -1,29 +1,29 @@
 import { describe } from 'riteway';
 import deepFreeze from 'deep-freeze';
 
-import { mergeFeatures } from './merge-features';
+import { mergeFeatureNames } from './merge-feature-names';
 
-describe('mergeFeatures()', async should => {
+describe('mergeFeatureNames()', async should => {
   const { assert } = should();
 
   assert({
     given: 'one array',
     should: 'return an new empty array',
-    actual: mergeFeatures(deepFreeze([])),
+    actual: mergeFeatureNames(deepFreeze([])),
     expected: []
   });
 
   assert({
     given: 'two or more empty arrays',
     should: 'return an new empty array',
-    actual: mergeFeatures(deepFreeze([]), deepFreeze([]), deepFreeze([])),
+    actual: mergeFeatureNames(deepFreeze([]), deepFreeze([]), deepFreeze([])),
     expected: []
   });
 
   assert({
     given: 'two or more arrays of strings with duplicate values',
     should: 'return a new array with all the unique values',
-    actual: mergeFeatures(
+    actual: mergeFeatureNames(
       deepFreeze(['foo', 'bar', 'baz']),
       deepFreeze(['bar', 'cat', 'bat']),
       deepFreeze(['baz', 'rat', 'dog'])

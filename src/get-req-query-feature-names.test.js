@@ -1,14 +1,14 @@
 import { describe } from 'riteway';
 import deepFreeze from 'deep-freeze';
 
-import { getReqQueryFeatures } from './get-req-query-features';
+import { getReqQueryFeatureNames } from './get-req-query-feature-names';
 
-describe('getReqQueryFeatures()', async should => {
+describe('getReqQueryFeatureNames()', async should => {
   const { assert } = should('');
   assert({
     given: 'no arguments',
     should: 'return an empty array',
-    actual: getReqQueryFeatures(),
+    actual: getReqQueryFeatureNames(),
     expected: []
   });
   {
@@ -18,7 +18,7 @@ describe('getReqQueryFeatures()', async should => {
     assert({
       given: 'incorrectly formed req object',
       should: 'return an empty array',
-      actual: getReqQueryFeatures(req),
+      actual: getReqQueryFeatureNames(req),
       expected: []
     });
   }
@@ -31,7 +31,7 @@ describe('getReqQueryFeatures()', async should => {
     assert({
       given: 'incorrectly formed req object',
       should: 'return an empty array',
-      actual: getReqQueryFeatures(req),
+      actual: getReqQueryFeatureNames(req),
       expected: []
     });
   }
@@ -44,7 +44,7 @@ describe('getReqQueryFeatures()', async should => {
     assert({
       given: 'incorrectly formed req object',
       should: 'return an empty array',
-      actual: getReqQueryFeatures(req),
+      actual: getReqQueryFeatureNames(req),
       expected: []
     });
   }
@@ -57,7 +57,7 @@ describe('getReqQueryFeatures()', async should => {
     assert({
       given: 'req object with features',
       should: 'return the correct features',
-      actual: getReqQueryFeatures(req),
+      actual: getReqQueryFeatureNames(req),
       expected: ['foo', 'bar', 'help']
     });
   }

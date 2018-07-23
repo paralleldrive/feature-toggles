@@ -12,8 +12,8 @@ npm install --save @paralleldrive/feature-toggles
 
 ```js
 import {
-  getCurrentActiveFeatures,
-  isActive
+  getCurrentActiveFeatureNames,
+  isActiveFeatureName
 } from '@paralleldrive/feature-toggles';
 
 const initialFeatures = [
@@ -37,16 +37,15 @@ const initialFeatures = [
 
 const req = { query: { ft: 'ratings,help' } };
 
-const activeFeatures = getCurrentActiveFeatures({
+const activeFeatures = getCurrentActiveFeatureNames({
   initialFeatures,
   req
 });
 
-const isCommentsActive = isActive('comments', activeFeatures); // true
-const isRatingsActive = isActive('ratings', activeFeatures); // true ( enabled via req query object )
-const isFAQActive = isActive('faq', activeFeatures); // false
-const isHelpActive = isActive('help', activeFeatures); // true ( enabled via req query object )
-
+const isCommentsActive = isActiveFeatureName('comments', activeFeatures); // true
+const isRatingsActive = isActiveFeatureName('ratings', activeFeatures); // true ( enabled via req query object )
+const isFAQActive = isActiveFeatureName('faq', activeFeatures); // false
+const isHelpActive = isActiveFeatureName('help', activeFeatures); // true ( enabled via req query object )
 ```
 
 ## API
@@ -65,13 +64,13 @@ interface Feature {
 
 ### Functions
 
-#### getActiveFeatures
+#### getActiveFeatureNames
 
 `([...Feature]) => [...String]`
 
 Takes an array of feature objects and returns an array of active feature names.
 
-#### getBrowserQueryFeatures
+#### getBrowserQueryFeatureNames
 
 Takes a `window.location.search` string and returns an array of active feature names. If search is not provided will grab the global `window.location.search` if available.
 
@@ -80,10 +79,10 @@ Takes a `window.location.search` string and returns an array of active feature n
 ```js
 const search = '?ft=foo,bar,baz';
 
-getBrowserQueryFeatures(search); // ['foo', 'bar', 'baz']
+getBrowserQueryFeatureNames(search); // ['foo', 'bar', 'baz']
 ```
 
-#### getCurrentActiveFeatures
+#### getCurrentActiveFeatureNames
 
 Takes an array of initialFeatures, a req object, and a `window.location.search` string and returns an array of active feature names. If search is not provided will grab the global `window.location.search` if available.
 
@@ -97,7 +96,7 @@ const initialFeatures = [
   { name: 'other': isActive: false }
 ]
 
-getCurrentActiveFeatures({ initialFeatures }); // ['foo']
+getCurrentActiveFeatureNames({ initialFeatures }); // ['foo']
 
 const req = {
   query:{
@@ -105,10 +104,10 @@ const req = {
   }
 };
 
-getCurrentActiveFeatures({ initialFeatures, req }); // ['foo', 'bar', 'baz']
+getCurrentActiveFeatureNames({ initialFeatures, req }); // ['foo', 'bar', 'baz']
 ```
 
-#### getReqQueryFeatures
+#### getReqQueryFeatureNames
 
 `(req = {}) => [...String]`
 
@@ -121,10 +120,10 @@ const req = {
   }
 };
 
-getReqQueryFeatures(req); // ['foo', 'bar', 'help']
+getReqQueryFeatureNames(req); // ['foo', 'bar', 'help']
 ```
 
-#### getQueryFeatures
+#### getQueryFeatureNames
 
 `(query = {}) => [...String]`
 
@@ -132,10 +131,10 @@ Takes a [query object](https://nodejs.org/api/url.html) and returns an array of 
 
 ```js
 const query = { ft='foo,bar,help' }
-getQueryFeatures(query); // ['foo', 'bar', 'help']
+getQueryFeatureNames(query); // ['foo', 'bar', 'help']
 ```
 
-#### isActive
+#### isActiveFeatureName
 
 `String => [...String] => boolean`
 
@@ -143,11 +142,11 @@ Returns true if a feature name is in the array else it returns false.
 
 ```js
 const currentFeatures = ['foo', 'bar', 'baz'];
-isActive('bar', currentFeatures); // true
-isActive('cat', currentFeatures); // false
+isActiveFeatureName('bar', currentFeatures); // true
+isActiveFeatureName('cat', currentFeatures); // false
 ```
 
-#### mergeFeatures
+#### mergeFeatureNames
 
 `(...[...String]) => [...String]`
 
@@ -155,10 +154,10 @@ Merge feature names without duplicating.
 
 ```js
 const currentFeatures = ['foo', 'bar', 'baz'];
-mergeFeatures(currentFeatures, ['fish', 'bar', 'cat']); // ['foo', 'bar', 'baz', 'fish', 'cat']
+mergeFeatureNames(currentFeatures, ['fish', 'bar', 'cat']); // ['foo', 'bar', 'baz', 'fish', 'cat']
 ```
 
-#### removeFeatures
+#### removeFeatureNames
 
 `([...String], [...String]) => [...String]`
 
@@ -166,5 +165,5 @@ Removes feature names
 
 ```js
 const currentFeatures = ['foo', 'bar', 'baz', 'cat'];
-removeFeatures(currentFeatures, ['fish', 'bar', 'cat']); // ['foo', 'baz']
+removeFeatureNames(currentFeatures, ['fish', 'bar', 'cat']); // ['foo', 'baz']
 ```

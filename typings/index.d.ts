@@ -13,13 +13,13 @@ declare module '@paralleldrive/feature-toggles' {
     readonly query: Query;
   }
 
-  function getActiveFeatures(
+  function getActiveFeatureNames(
     features: ReadonlyArray<Feature>
   ): ReadonlyArray<string>;
-  export { getActiveFeatures };
+  export { getActiveFeatureNames };
 
-  function getQueryFeatures(query?: Query): ReadonlyArray<string>;
-  export { getQueryFeatures };
+  function getQueryFeatureNames(query?: Query): ReadonlyArray<string>;
+  export { getQueryFeatureNames };
 
   function mergeFeatures(
     currentFeatures: ReadonlyArray<string>, // tslint:disable-next-line:readonly-array
@@ -42,16 +42,16 @@ declare module '@paralleldrive/feature-toggles' {
   ): (currentFeatures: ReadonlyArray<string>) => boolean;
   export { isActive };
 
-  function getReqQueryFeatures(req?: Req): ReadonlyArray<string>;
-  export { getReqQueryFeatures };
+  function getReqQueryFeatureNames(req?: Req): ReadonlyArray<string>;
+  export { getReqQueryFeatureNames };
 
-  function getBrowserQueryFeatures(search?: string): ReadonlyArray<string>;
-  export { getBrowserQueryFeatures };
+  function getBrowserQueryFeatureNames(search?: string): ReadonlyArray<string>;
+  export { getBrowserQueryFeatureNames };
 
-  function getCurrentActiveFeatures(obj: {
+  function getCurrentActiveFeatureNames(obj: {
     readonly initialFeatures: ReadonlyArray<Feature>;
     readonly req?: Req;
     readonly search?: string;
   }): ReadonlyArray<string>;
-  export { getCurrentActiveFeatures };
+  export { getCurrentActiveFeatureNames };
 }

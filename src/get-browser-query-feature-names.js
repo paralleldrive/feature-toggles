@@ -1,9 +1,9 @@
 import parse from 'url-parse';
-import { getQueryFeatures } from './get-query-features';
+import { getQueryFeatureNames } from './get-query-feature-names';
 
-export const getBrowserQueryFeatures = (
+export const getBrowserQueryFeatureNames = (
   search = typeof window === 'undefined' ? '' : window.location.search
 ) => {
   const { query } = parse(search, true);
-  return getQueryFeatures(query);
+  return getQueryFeatureNames(query);
 };
