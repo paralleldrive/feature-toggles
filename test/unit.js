@@ -7,3 +7,4 @@ import '../src/remove-feature-names.test.js';
 import '../src/get-req-query-features.test.js';
 import '../src/get-browser-query-features.test.js';
 import '../src/get-current-active-features.test.js';
+import '../src/activate-features.test.js';
