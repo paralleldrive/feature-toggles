@@ -1,29 +1,29 @@
 import { describe } from 'riteway';
 import deepFreeze from 'deep-freeze';
 
-import { removeFeatures } from './remove-features';
+import { removeFeatureNames } from './remove-feature-names';
 
-describe('removeFeatures()', async should => {
+describe('removeFeatureNames()', async should => {
   const { assert } = should();
 
   assert({
     given: 'no arguments',
     should: 'return an empty array',
-    actual: removeFeatures(),
+    actual: removeFeatureNames(),
     expected: []
   });
 
   assert({
     given: 'two empty arrays',
     should: 'return an empty array',
-    actual: removeFeatures([], []),
+    actual: removeFeatureNames([], []),
     expected: []
   });
 
   assert({
     given: 'empty array of Current Features and an array of Features to Remove',
     should: 'return an empty array',
-    actual: removeFeatures([], ['foo', 'bar']),
+    actual: removeFeatureNames([], ['foo', 'bar']),
     expected: []
   });
   {
@@ -32,7 +32,7 @@ describe('removeFeatures()', async should => {
       given:
         'array of Current Features and an empty array of Features to Remove',
       should: 'equivalent array of Current Features',
-      actual: removeFeatures(currentFeatures, []),
+      actual: removeFeatureNames(currentFeatures, []),
       expected: ['foo', 'bar']
     });
   }
@@ -42,7 +42,7 @@ describe('removeFeatures()', async should => {
     assert({
       given: 'array of Current Features and an array of Features to Remove',
       should: 'the correct new array',
-      actual: removeFeatures(currentFeatures, removedFeatures),
+      actual: removeFeatureNames(currentFeatures, removedFeatures),
       expected: ['foo', 'baz']
     });
   }
@@ -51,7 +51,7 @@ describe('removeFeatures()', async should => {
     assert({
       given: 'an array with items',
       should: 'return equivalent array',
-      actual: removeFeatures(currentFeatures),
+      actual: removeFeatureNames(currentFeatures),
       expected: currentFeatures
     });
   }

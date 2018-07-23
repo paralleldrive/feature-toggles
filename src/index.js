@@ -1,8 +1,8 @@
 export { getActiveFeatures } from './get-active-features';
-export { mergeFeatures } from './merge-features';
-export { isActive } from './is-active';
+export { mergeFeatureNames } from './merge-feature-names';
+export { isActiveFeatureName } from './is-active-feature-name';
 export { getQueryFeatures } from './get-query-features';
-export { removeFeatures } from './remove-features';
+export { removeFeatureNames } from './remove-feature-names';
 export { getReqQueryFeatures } from './get-req-query-features';
 export { getCurrentActiveFeatures } from './get-current-active-features';
 export { getBrowserQueryFeatures } from './get-browser-query-features';

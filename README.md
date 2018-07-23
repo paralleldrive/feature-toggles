@@ -46,7 +46,6 @@ const isCommentsActive = isActive('comments', activeFeatures); // true
 const isRatingsActive = isActive('ratings', activeFeatures); // true ( enabled via req query object )
 const isFAQActive = isActive('faq', activeFeatures); // false
 const isHelpActive = isActive('help', activeFeatures); // true ( enabled via req query object )
-
 ```
 
 ## API
@@ -135,7 +134,7 @@ const query = { ft='foo,bar,help' }
 getQueryFeatures(query); // ['foo', 'bar', 'help']
 ```
 
-#### isActive
+#### isActiveFeatureName
 
 `String => [...String] => boolean`
 
@@ -143,11 +142,11 @@ Returns true if a feature name is in the array else it returns false.
 
 ```js
 const currentFeatures = ['foo', 'bar', 'baz'];
-isActive('bar', currentFeatures); // true
-isActive('cat', currentFeatures); // false
+isActiveFeatureName('bar', currentFeatures); // true
+isActiveFeatureName('cat', currentFeatures); // false
 ```
 
-#### mergeFeatures
+#### mergeFeatureNames
 
 `(...[...String]) => [...String]`
 
@@ -155,10 +154,10 @@ Merge feature names without duplicating.
 
 ```js
 const currentFeatures = ['foo', 'bar', 'baz'];
-mergeFeatures(currentFeatures, ['fish', 'bar', 'cat']); // ['foo', 'bar', 'baz', 'fish', 'cat']
+mergeFeatureNames(currentFeatures, ['fish', 'bar', 'cat']); // ['foo', 'bar', 'baz', 'fish', 'cat']
 ```
 
-#### removeFeatures
+#### removeFeatureNames
 
 `([...String], [...String]) => [...String]`
 
@@ -166,5 +165,5 @@ Removes feature names
 
 ```js
 const currentFeatures = ['foo', 'bar', 'baz', 'cat'];
-removeFeatures(currentFeatures, ['fish', 'bar', 'cat']); // ['foo', 'baz']
+removeFeatureNames(currentFeatures, ['fish', 'bar', 'cat']); // ['foo', 'baz']
 ```
