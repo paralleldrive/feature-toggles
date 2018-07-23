@@ -13,7 +13,7 @@ npm install --save @paralleldrive/feature-toggles
 ```js
 import {
   getCurrentActiveFeatures,
-  isActive
+  isActiveFeatureName
 } from '@paralleldrive/feature-toggles';
 
 const initialFeatures = [
@@ -42,10 +42,10 @@ const activeFeatures = getCurrentActiveFeatures({
   req
 });
 
-const isCommentsActive = isActive('comments', activeFeatures); // true
-const isRatingsActive = isActive('ratings', activeFeatures); // true ( enabled via req query object )
-const isFAQActive = isActive('faq', activeFeatures); // false
-const isHelpActive = isActive('help', activeFeatures); // true ( enabled via req query object )
+const isCommentsActive = isActiveFeatureName('comments', activeFeatures); // true
+const isRatingsActive = isActiveFeatureName('ratings', activeFeatures); // true ( enabled via req query object )
+const isFAQActive = isActiveFeatureName('faq', activeFeatures); // false
+const isHelpActive = isActiveFeatureName('help', activeFeatures); // true ( enabled via req query object )
 ```
 
 ## API
