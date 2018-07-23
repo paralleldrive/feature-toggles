@@ -50,7 +50,7 @@
     "prettier": "prettier --write 'src/**/*.js'",
     "test-unit": "tape -r babel-register -r babel-polyfill test/unit.js",
     "test-integration": "tape -r babel-register -r babel-polyfill test/integration",
-    "watch": "watch 'reset && npm run --silent test' src",
+    "watch": "watch 'npm run --silent test-unit' src",
     "precommit-msg": "echo 'Pre-commit checks...' && exit 0",
     "pretty-quick": "pretty-quick --staged",
     "prepare": "npm run build",
