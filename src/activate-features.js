@@ -9,7 +9,9 @@ const isActiveLens = lensPath(['isActive']);
 const getName = view(nameLens);
 const setIsActive = set(isActiveLens);
 
-export const activateFeatures = curryN(2)(
+const curryTwo = curryN(2);
+
+export const activateFeatures = curryTwo(
   (featureNamesToEnable = [], features = []) =>
     features.map(
       feature =>
