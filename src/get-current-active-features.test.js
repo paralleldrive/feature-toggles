@@ -18,6 +18,11 @@ const makeFeatures = () =>
       isActive: false
     },
     {
+      name: 'baz-dependent',
+      isActive: false,
+      dependencies: ['baz']
+    },
+    {
       name: 'other',
       isActive: false
     }
@@ -71,6 +76,23 @@ describe('getCurrentActiveFeatures()', async should => {
       expected: ['foo', 'bar', 'baz', 'other']
     });
   }
+  {
+    const req = deepFreeze({
+      query: {
+        ft: 'baz-dependent'
+      }
+    });
+
+    assert({
+      given: 'initial features and req',
+      should: 'respect dependencies and enable the correct features',
+      actual: getCurrentActiveFeatures({
+        initialFeatures: makeFeatures(),
+        req
+      }),
+      expected: ['foo', 'bar']
+    });
+  }
 
   {
     const search = '?ft=baz,other';
@@ -83,6 +105,20 @@ describe('getCurrentActiveFeatures()', async should => {
         search
       }),
       expected: ['foo', 'bar', 'baz', 'other']
+    });
+  }
+
+  {
+    const search = '?ft=baz-dependent';
+
+    assert({
+      given: 'initial features and search',
+      should: 'respect dependencies and enable the correct features',
+      actual: getCurrentActiveFeatures({
+        initialFeatures: makeFeatures(),
+        search
+      }),
+      expected: ['foo', 'bar']
     });
   }
 });
