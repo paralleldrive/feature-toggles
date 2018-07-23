@@ -23,7 +23,7 @@ const makeFeatures = () =>
     }
   ]);
 
-describe('deactivateFeatures()', async should => {
+describe('getCurrentActiveFeatures()', async should => {
   const { assert } = should();
 
   assert({
