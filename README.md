@@ -64,6 +64,30 @@ interface Feature {
 
 ### Functions
 
+#### activateFeatures
+
+`[...String] => [...Feature] => [...Feature]`
+
+Activates Features by name of the provided array of Features.
+
+```js
+const initialFeatures = [
+  { name: 'foo', isActive: true },
+  { name: 'bar', isActive: false },
+  { name: 'baz', isActive: false }
+];
+
+activateFeatures(['bar', 'baz'], features);
+
+//
+// [
+//   { name: 'foo', isActive: true },
+//   { name: 'bar', isActive: true },
+//   { name: 'baz', isActive: true },
+// ]
+//
+```
+
 #### getActiveFeatureNames
 
 `([...Feature]) => [...String]`
@@ -84,7 +108,7 @@ getBrowserQueryFeatureNames(search); // ['foo', 'bar', 'baz']
 
 #### getCurrentActiveFeatureNames
 
-Takes an array of initialFeatures, a req object, and a `window.location.search` string and returns an array of active feature names. If search is not provided will grab the global `window.location.search` if available.
+Takes an array of initialFeatures, a req object, and a `window.location.search` string and returns an array of active feature names. If search is not provided will grab the global `window.location.search` if available. This functoin respect
 
 `({ initialFeatures = [...Feature], req? , search? }) => [...String])]`
 
