@@ -3,7 +3,7 @@ import { parse } from 'url';
 
 import { isActiveFeatureName } from './is-active-feature-name';
 import { mergeFeatureNames } from './merge-feature-names';
-import { getQueryFeatures } from './get-query-features';
+import { getQueryFeatureNames } from './get-query-feature-names';
 
 const setStatus = (res, isActiveFeatureName) =>
   isActiveFeatureName ? res.status(200) : res.status(404);
@@ -15,7 +15,7 @@ export const createExpressMiddleware = curry(
     const { query } = parsedUrl;
     const updatedFeatures = mergeFeatureNames(
       features,
-      getQueryFeatures(query)
+      getQueryFeatureNames(query)
     );
     setStatus(res, isActiveFeatureName(requiredFeature, updatedFeatures));
 

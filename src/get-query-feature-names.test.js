@@ -1,15 +1,15 @@
 import { describe } from 'riteway';
 import deepFreeze from 'deep-freeze';
 
-import { getQueryFeatures } from './get-query-features';
+import { getQueryFeatureNames } from './get-query-feature-names';
 
-describe('getQueryFeatures()', async should => {
+describe('getQueryFeatureNames()', async should => {
   const { assert } = should();
 
   assert({
     given: 'no arguments',
     should: 'return an empty array',
-    actual: getQueryFeatures(),
+    actual: getQueryFeatureNames(),
     expected: []
   });
 
@@ -18,7 +18,7 @@ describe('getQueryFeatures()', async should => {
     assert({
       given: 'empty object',
       should: 'return an empty array',
-      actual: getQueryFeatures(query),
+      actual: getQueryFeatureNames(query),
       expected: []
     });
   }
@@ -28,7 +28,7 @@ describe('getQueryFeatures()', async should => {
     assert({
       given: 'query object with no ft key',
       should: 'return an empty array',
-      actual: getQueryFeatures(query),
+      actual: getQueryFeatureNames(query),
       expected: []
     });
   }
@@ -38,7 +38,7 @@ describe('getQueryFeatures()', async should => {
     assert({
       given: 'query object with key of ft and a value of a string of features',
       should: 'return an array of the features',
-      actual: getQueryFeatures(query),
+      actual: getQueryFeatureNames(query),
       expected: ['foo', 'bar', 'help']
     });
   }
