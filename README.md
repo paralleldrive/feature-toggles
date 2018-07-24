@@ -77,7 +77,7 @@ const initialFeatures = [
   { name: 'baz', isActive: false }
 ];
 
-activateFeatures(['bar', 'baz'], features);
+activateFeatures(['bar', 'baz'])(initialFeatures);
 
 //
 // [
