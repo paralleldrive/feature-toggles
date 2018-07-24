@@ -21,17 +21,17 @@ declare module '@paralleldrive/feature-toggles' {
   function getQueryFeatureNames(query?: Query): ReadonlyArray<string>;
   export { getQueryFeatureNames };
 
-  function mergeFeatures(
+  function mergeFeatureNames(
     currentFeatures: ReadonlyArray<string>, // tslint:disable-next-line:readonly-array
     ...restOfFeatures: Array<ReadonlyArray<string>>
   ): ReadonlyArray<string>;
-  export { mergeFeatures };
+  export { mergeFeatureNames };
 
-  function removeFeatures(
+  function removeFeatureNames(
     currentFeatures: ReadonlyArray<string>,
     features: ReadonlyArray<string>
   ): ReadonlyArray<string>;
-  export { removeFeatures };
+  export { removeFeatureNames };
 
   function isActive(
     name: string,
