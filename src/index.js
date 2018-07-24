@@ -1,9 +1,11 @@
-export { getActiveFeatures } from './get-active-features';
+export { getActiveFeatureNames } from './get-active-feature-names';
 export { mergeFeatureNames } from './merge-feature-names';
 export { isActiveFeatureName } from './is-active-feature-name';
-export { getQueryFeatures } from './get-query-features';
+export { getQueryFeatureNames } from './get-query-feature-names';
 export { removeFeatureNames } from './remove-feature-names';
-export { getReqQueryFeatures } from './get-req-query-features';
-export { getCurrentActiveFeatures } from './get-current-active-features';
-export { getBrowserQueryFeatures } from './get-browser-query-features';
+export { getReqQueryFeatureNames } from './get-req-query-feature-names';
+export {
+  getCurrentActiveFeatureNames
+} from './get-current-active-feature-names';
+export { getBrowserQueryFeatureNames } from './get-browser-query-feature-names';
 export { createExpressMiddleware } from './create-express-middleware';

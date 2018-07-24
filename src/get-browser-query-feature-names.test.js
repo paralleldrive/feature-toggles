@@ -1,14 +1,14 @@
 import { describe } from 'riteway';
 
-import { getBrowserQueryFeatures } from './get-browser-query-features';
+import { getBrowserQueryFeatureNames } from './get-browser-query-feature-names';
 
-describe('getBrowserQueryFeatures()', async should => {
+describe('getBrowserQueryFeatureNames()', async should => {
   const { assert } = should();
   {
     assert({
       given: 'no arguments in node',
       should: 'return empy array',
-      actual: getBrowserQueryFeatures(),
+      actual: getBrowserQueryFeatureNames(),
       expected: []
     });
   }
@@ -17,7 +17,7 @@ describe('getBrowserQueryFeatures()', async should => {
     assert({
       given: 'search string with no features',
       should: 'return empy array',
-      actual: getBrowserQueryFeatures(url),
+      actual: getBrowserQueryFeatureNames(url),
       expected: []
     });
   }
@@ -26,7 +26,7 @@ describe('getBrowserQueryFeatures()', async should => {
     assert({
       given: 'search string with features',
       should: 'return the correct features',
-      actual: getBrowserQueryFeatures(url),
+      actual: getBrowserQueryFeatureNames(url),
       expected: ['foo', 'bar']
     });
   }

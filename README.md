@@ -12,7 +12,7 @@ npm install --save @paralleldrive/feature-toggles
 
 ```js
 import {
-  getCurrentActiveFeatures,
+  getCurrentActiveFeatureNames,
   isActiveFeatureName
 } from '@paralleldrive/feature-toggles';
 
@@ -37,7 +37,7 @@ const initialFeatures = [
 
 const req = { query: { ft: 'ratings,help' } };
 
-const activeFeatures = getCurrentActiveFeatures({
+const activeFeatures = getCurrentActiveFeatureNames({
   initialFeatures,
   req
 });
@@ -64,13 +64,13 @@ interface Feature {
 
 ### Functions
 
-#### getActiveFeatures
+#### getActiveFeatureNames
 
 `([...Feature]) => [...String]`
 
 Takes an array of feature objects and returns an array of active feature names.
 
-#### getBrowserQueryFeatures
+#### getBrowserQueryFeatureNames
 
 Takes a `window.location.search` string and returns an array of active feature names. If search is not provided will grab the global `window.location.search` if available.
 
@@ -79,10 +79,10 @@ Takes a `window.location.search` string and returns an array of active feature n
 ```js
 const search = '?ft=foo,bar,baz';
 
-getBrowserQueryFeatures(search); // ['foo', 'bar', 'baz']
+getBrowserQueryFeatureNames(search); // ['foo', 'bar', 'baz']
 ```
 
-#### getCurrentActiveFeatures
+#### getCurrentActiveFeatureNames
 
 Takes an array of initialFeatures, a req object, and a `window.location.search` string and returns an array of active feature names. If search is not provided will grab the global `window.location.search` if available.
 
@@ -96,7 +96,7 @@ const initialFeatures = [
   { name: 'other': isActive: false }
 ]
 
-getCurrentActiveFeatures({ initialFeatures }); // ['foo']
+getCurrentActiveFeatureNames({ initialFeatures }); // ['foo']
 
 const req = {
   query:{
@@ -104,10 +104,10 @@ const req = {
   }
 };
 
-getCurrentActiveFeatures({ initialFeatures, req }); // ['foo', 'bar', 'baz']
+getCurrentActiveFeatureNames({ initialFeatures, req }); // ['foo', 'bar', 'baz']
 ```
 
-#### getReqQueryFeatures
+#### getReqQueryFeatureNames
 
 `(req = {}) => [...String]`
 
@@ -120,10 +120,10 @@ const req = {
   }
 };
 
-getReqQueryFeatures(req); // ['foo', 'bar', 'help']
+getReqQueryFeatureNames(req); // ['foo', 'bar', 'help']
 ```
 
-#### getQueryFeatures
+#### getQueryFeatureNames
 
 `(query = {}) => [...String]`
 
@@ -131,7 +131,7 @@ Takes a [query object](https://nodejs.org/api/url.html) and returns an array of 
 
 ```js
 const query = { ft='foo,bar,help' }
-getQueryFeatures(query); // ['foo', 'bar', 'help']
+getQueryFeatureNames(query); // ['foo', 'bar', 'help']
 ```
 
 #### isActiveFeatureName

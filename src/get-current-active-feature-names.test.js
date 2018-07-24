@@ -1,7 +1,7 @@
 import { describe } from 'riteway';
 import deepFreeze from 'deep-freeze';
 
-import { getCurrentActiveFeatures } from './get-current-active-features';
+import { getCurrentActiveFeatureNames } from './get-current-active-feature-names';
 
 const makeFeatures = () =>
   deepFreeze([
@@ -28,34 +28,34 @@ const makeFeatures = () =>
     }
   ]);
 
-describe('getCurrentActiveFeatures()', async should => {
+describe('getCurrentActiveFeatureNames()', async should => {
   const { assert } = should();
 
   assert({
     given: 'no arguments',
     should: 'return an empty array',
-    actual: getCurrentActiveFeatures(),
+    actual: getCurrentActiveFeatureNames(),
     expected: []
   });
 
   assert({
     given: 'an empty object',
     should: 'return an empty array',
-    actual: getCurrentActiveFeatures({}),
+    actual: getCurrentActiveFeatureNames({}),
     expected: []
   });
 
   assert({
     given: 'an empty initial features',
     should: 'return an empty array',
-    actual: getCurrentActiveFeatures({ initialFeatures: [] }),
+    actual: getCurrentActiveFeatureNames({ initialFeatures: [] }),
     expected: []
   });
 
   assert({
     given: 'initial features',
     should: 'return the correct features',
-    actual: getCurrentActiveFeatures({ initialFeatures: makeFeatures() }),
+    actual: getCurrentActiveFeatureNames({ initialFeatures: makeFeatures() }),
     expected: ['foo', 'bar']
   });
 
@@ -69,7 +69,7 @@ describe('getCurrentActiveFeatures()', async should => {
     assert({
       given: 'initial features and req',
       should: 'return the correct features',
-      actual: getCurrentActiveFeatures({
+      actual: getCurrentActiveFeatureNames({
         initialFeatures: makeFeatures(),
         req
       }),
@@ -86,7 +86,7 @@ describe('getCurrentActiveFeatures()', async should => {
     assert({
       given: 'initial features and req',
       should: 'respect dependencies and enable the correct features',
-      actual: getCurrentActiveFeatures({
+      actual: getCurrentActiveFeatureNames({
         initialFeatures: makeFeatures(),
         req
       }),
@@ -100,7 +100,7 @@ describe('getCurrentActiveFeatures()', async should => {
     assert({
       given: 'initial features and search',
       should: 'return the correct features',
-      actual: getCurrentActiveFeatures({
+      actual: getCurrentActiveFeatureNames({
         initialFeatures: makeFeatures(),
         search
       }),
@@ -114,7 +114,7 @@ describe('getCurrentActiveFeatures()', async should => {
     assert({
       given: 'initial features and search',
       should: 'respect dependencies and enable the correct features',
-      actual: getCurrentActiveFeatures({
+      actual: getCurrentActiveFeatureNames({
         initialFeatures: makeFeatures(),
         search
       }),
