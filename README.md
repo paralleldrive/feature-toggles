@@ -64,6 +64,30 @@ interface Feature {
 
 ### Functions
 
+#### activateFeatures
+
+`[...String] => [...Feature] => [...Feature]`
+
+Activates Features by name of the provided array of Features.
+
+```js
+const initialFeatures = [
+  { name: 'foo', isActive: true },
+  { name: 'bar', isActive: false },
+  { name: 'baz', isActive: false }
+];
+
+activateFeatures(['bar', 'baz'])(initialFeatures);
+
+//
+// [
+//   { name: 'foo', isActive: true },
+//   { name: 'bar', isActive: true },
+//   { name: 'baz', isActive: true },
+// ]
+//
+```
+
 #### getActiveFeatureNames
 
 `([...Feature]) => [...String]`

@@ -1,3 +1,4 @@
+export { activateFeatures } from './activate-features';
 export { getActiveFeatureNames } from './get-active-feature-names';
 export { mergeFeatureNames } from './merge-feature-names';
 export { isActiveFeatureName } from './is-active-feature-name';

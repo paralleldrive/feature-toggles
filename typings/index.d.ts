@@ -13,6 +13,14 @@ declare module '@paralleldrive/feature-toggles' {
     readonly query: Query;
   }
 
+  function activateFeatures(
+    featureNamesToEnable: ReadonlyArray<string>,
+    features: ReadonlyArray<Feature>
+  ): ReadonlyArray<Feature>;
+  function activateFeatures(
+    featureNamesToEnable: ReadonlyArray
+  ): (features: ReadonlyArray<Feature>) => ReadonlyArray<Feature>;
+
   function getActiveFeatureNames(
     features: ReadonlyArray<Feature>
   ): ReadonlyArray<string>;
