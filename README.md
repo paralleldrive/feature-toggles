@@ -37,15 +37,15 @@ const initialFeatures = [
 
 const req = { query: { ft: 'ratings,help' } };
 
-const activeFeatures = getCurrentActiveFeatureNames({
+const activeFeaturesNames = getCurrentActiveFeatureNames({
   initialFeatures,
   req
 });
 
-const isCommentsActive = isActiveFeatureName('comments')(activeFeatures); // true
-const isRatingsActive = isActiveFeatureName('ratings')(activeFeatures); // true ( enabled via req query object )
-const isFAQActive = isActiveFeatureName('faq')(activeFeatures); // false
-const isHelpActive = isActiveFeatureName('help')(activeFeatures); // true ( enabled via req query object )
+const isCommentsActive = isActiveFeatureName('comments')(activeFeaturesNames); // true
+const isRatingsActive = isActiveFeatureName('ratings')(activeFeaturesNames); // true ( enabled via req query object )
+const isFAQActive = isActiveFeatureName('faq')(activeFeaturesNames); // false
+const isHelpActive = isActiveFeatureName('help')(activeFeaturesNames); // true ( enabled via req query object )
 ```
 
 ## API
@@ -64,11 +64,35 @@ interface Feature {
 
 ### Functions
 
+#### activateFeatures
+
+`[...String] => [...Feature] => [...Feature]`
+
+Activates Features by name of the provided array of Features.
+
+```js
+const initialFeatures = [
+  { name: 'foo', isActive: true },
+  { name: 'bar', isActive: false },
+  { name: 'baz', isActive: false }
+];
+
+activateFeatures(['bar', 'baz'])(initialFeatures);
+
+//
+// [
+//   { name: 'foo', isActive: true },
+//   { name: 'bar', isActive: true },
+//   { name: 'baz', isActive: true },
+// ]
+//
+```
+
 #### getActiveFeatureNames
 
 `([...Feature]) => [...String]`
 
-Takes an array of feature objects and returns an array of active feature names.
+Takes an array of feature objects and returns an array of active feature names. This function respects Feature dependencies.
 
 #### getBrowserQueryFeatureNames
 
@@ -84,7 +108,7 @@ getBrowserQueryFeatureNames(search); // ['foo', 'bar', 'baz']
 
 #### getCurrentActiveFeatureNames
 
-Takes an array of initialFeatures, a req object, and a `window.location.search` string and returns an array of active feature names. If search is not provided will grab the global `window.location.search` if available.
+Takes an array of initialFeatures, a req object, and a `window.location.search` string and returns an array of active feature names. If search is not provided will grab the global `window.location.search` if available. This function respects Feature dependencies.
 
 `({ initialFeatures = [...Feature], req? , search? }) => [...String])]`
 
