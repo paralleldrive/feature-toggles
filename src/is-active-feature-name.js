@@ -1,5 +1,2 @@
-import curry from 'ramda/src/curry';
-
-export const isActiveFeatureName = curry((featureName = '', features = []) =>
-  features.includes(featureName)
-);
+export const isActiveFeatureName = (featureName = '') => (features = []) =>
+  features.includes(featureName);

@@ -7,28 +7,28 @@ describe('isActiveFeatureName()', async should => {
   assert({
     given: 'no arguments',
     should: 'return false',
-    actual: isActiveFeatureName(),
+    actual: isActiveFeatureName()(),
     expected: false
   });
 
   assert({
     given: 'an empty array and id string',
     should: 'return false',
-    actual: isActiveFeatureName('posts', []),
+    actual: isActiveFeatureName('posts')([]),
     expected: false
   });
 
   assert({
     given: 'an array of feature names and existing feature id string',
     should: 'return true',
-    actual: isActiveFeatureName('bar', ['foo', 'bar', 'baz']),
+    actual: isActiveFeatureName('bar')(['foo', 'bar', 'baz']),
     expected: true
   });
 
   assert({
     given: 'an array of feature names and non existant feature id string',
     should: 'return false',
-    actual: isActiveFeatureName('non-existant-feature-id', [
+    actual: isActiveFeatureName('non-existant-feature-id')([
       'foo',
       'bar',
       'baz'

@@ -42,10 +42,10 @@ const activeFeatures = getCurrentActiveFeatureNames({
   req
 });
 
-const isCommentsActive = isActiveFeatureName('comments', activeFeatures); // true
-const isRatingsActive = isActiveFeatureName('ratings', activeFeatures); // true ( enabled via req query object )
-const isFAQActive = isActiveFeatureName('faq', activeFeatures); // false
-const isHelpActive = isActiveFeatureName('help', activeFeatures); // true ( enabled via req query object )
+const isCommentsActive = isActiveFeatureName('comments')(activeFeatures); // true
+const isRatingsActive = isActiveFeatureName('ratings')(activeFeatures); // true ( enabled via req query object )
+const isFAQActive = isActiveFeatureName('faq')(activeFeatures); // false
+const isHelpActive = isActiveFeatureName('help')(activeFeatures); // true ( enabled via req query object )
 ```
 
 ## API
@@ -142,8 +142,8 @@ Returns true if a feature name is in the array else it returns false.
 
 ```js
 const currentFeatures = ['foo', 'bar', 'baz'];
-isActiveFeatureName('bar', currentFeatures); // true
-isActiveFeatureName('cat', currentFeatures); // false
+isActiveFeatureName('bar')(currentFeatures); // true
+isActiveFeatureName('cat')(currentFeatures); // false
 ```
 
 #### mergeFeatureNames
