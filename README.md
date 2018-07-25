@@ -92,7 +92,7 @@ activateFeatures(['bar', 'baz'])(initialFeatures);
 
 `([...Feature]) => [...String]`
 
-Takes an array of feature objects and returns an array of active feature names.
+Takes an array of feature objects and returns an array of active feature names. This function respects Feature dependencies.
 
 #### getBrowserQueryFeatureNames
 
@@ -108,7 +108,7 @@ getBrowserQueryFeatureNames(search); // ['foo', 'bar', 'baz']
 
 #### getCurrentActiveFeatureNames
 
-Takes an array of initialFeatures, a req object, and a `window.location.search` string and returns an array of active feature names. If search is not provided will grab the global `window.location.search` if available.
+Takes an array of initialFeatures, a req object, and a `window.location.search` string and returns an array of active feature names. If search is not provided will grab the global `window.location.search` if available. This function respects Feature dependencies.
 
 `({ initialFeatures = [...Feature], req? , search? }) => [...String])]`
 
