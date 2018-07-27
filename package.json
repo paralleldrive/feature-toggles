@@ -1,6 +1,6 @@
 {
   "name": "@paralleldrive/feature-toggles",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Low-level feature toggle tools for Node and browsers.",
   "main": "dist/index.js",
   "types": "typings/index.d.ts",
