@@ -38,11 +38,11 @@ declare module '@paralleldrive/feature-toggles' {
   ): ReadonlyArray<string>;
   export { removeFeatureNames };
 
-  function isActive(
+  function isActiveFeatureName(
     name: string,
     currentFeatures: ReadonlyArray<string>
   ): boolean;
-  function isActive(
+  function isActiveFeatureName(
     name: string
   ): (currentFeatures: ReadonlyArray<string>) => boolean;
   export { isActive };
