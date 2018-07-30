@@ -45,7 +45,7 @@ declare module '@paralleldrive/feature-toggles' {
   function isActiveFeatureName(
     name: string
   ): (currentFeatures: ReadonlyArray<string>) => boolean;
-  export { isActive };
+  export { isActiveFeatureName };
 
   function getReqQueryFeatureNames(req?: Req): ReadonlyArray<string>;
   export { getReqQueryFeatureNames };
