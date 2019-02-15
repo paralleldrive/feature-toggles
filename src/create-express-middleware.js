@@ -15,8 +15,9 @@ export const createExpressMiddleware = curry(
       getQueryFeatureNames(query)
     );
 
-    if (!isActiveFeatureName(requiredFeature, updatedFeatures))
-      res.status(404).send();
+    if (!isActiveFeatureName(requiredFeature, updatedFeatures)) {
+      return res.status(404).send();
+    }
 
     const handler = methods[req.method.toLowerCase()];
     if (handler !== undefined && typeof handler === 'function') {
