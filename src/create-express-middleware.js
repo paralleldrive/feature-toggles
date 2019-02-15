@@ -5,9 +5,6 @@ import { isActiveFeatureName } from './is-active-feature-name';
 import { mergeFeatureNames } from './merge-feature-names';
 import { getQueryFeatureNames } from './get-query-feature-names';
 
-const setStatus = (res, isActiveFeatureName) =>
-  isActiveFeatureName ? res.status(200) : res.status(404).send();
-
 // ({ features: [...String] }, requiredFeature: String, methods?: Object) => (req, res, next) => void
 export const createExpressMiddleware = curry(
   ({ features }, requiredFeature, methods) => (req, res, next) => {
@@ -17,7 +14,9 @@ export const createExpressMiddleware = curry(
       features,
       getQueryFeatureNames(query)
     );
-    setStatus(res, isActiveFeatureName(requiredFeature, updatedFeatures));
+
+    if (!isActiveFeatureName(requiredFeature, updatedFeatures))
+      res.status(404).send();
 
     const handler = methods[req.method.toLowerCase()];
     if (handler !== undefined && typeof handler === 'function') {
