@@ -34,6 +34,7 @@ describe('createExpressMiddleware()', async should => {
     const features = ['posts', 'bar', 'foo'];
     const handler = createExpressMiddleware({ features }, 'help', {
       get: (req, res) => {
+        res.status(400);
         res.send();
       }
     });
