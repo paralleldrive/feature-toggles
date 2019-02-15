@@ -6,7 +6,7 @@ import { mergeFeatureNames } from './merge-feature-names';
 import { getQueryFeatureNames } from './get-query-feature-names';
 
 const setStatus = (res, isActiveFeatureName) =>
-  isActiveFeatureName ? res.status(200) : res.status(404);
+  isActiveFeatureName ? res.status(200) : res.status(404).send();
 
 // ({ features: [...String] }, requiredFeature: String, methods?: Object) => (req, res, next) => void
 export const createExpressMiddleware = curry(
