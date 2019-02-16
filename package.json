@@ -27,7 +27,7 @@
     "prettier": "1.16.4",
     "pretty-quick": "1.10.0",
     "prop-types": "15.6.2",
-    "riteway": "2.0.4",
+    "riteway": "5.0.1",
     "supertest": "3.4.2",
     "tape": "4.9.2",
     "updtr": "3.1.0",
