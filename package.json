@@ -36,7 +36,8 @@
   "dependencies": {
     "lodash": "4.17.15",
     "ramda": "0.26.1",
-    "url-parse": "1.4.7"
+    "url-parse": "1.4.7",
+    "snyk": "^1.189.0"
   },
   "pre-commit": [
     "lint",
@@ -54,8 +55,9 @@
     "watch": "watch 'npm run --silent test-unit' src",
     "precommit-msg": "echo 'Pre-commit checks...' && exit 0",
     "pretty-quick": "pretty-quick --staged",
-    "prepare": "npm run build",
-    "update": "updtr"
+    "prepare": "npm run snyk-protect; npm run build",
+    "update": "updtr",
+    "snyk-protect": "snyk protect"
   },
   "keywords": [
     "feature",
@@ -66,5 +68,6 @@
   "bugs": {
     "url": "https://github.com/paralleldrive/feature-toggles/issues"
   },
-  "homepage": "https://github.com/paralleldrive/feature-toggles#readme"
+  "homepage": "https://github.com/paralleldrive/feature-toggles#readme",
+  "snyk": true
 }
