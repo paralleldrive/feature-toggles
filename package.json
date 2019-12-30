@@ -29,7 +29,7 @@
     "prop-types": "15.7.2",
     "riteway": "2.0.8",
     "supertest": "4.0.2",
-    "tape": "4.11.0",
+    "tape": "4.12.1",
     "updtr": "3.1.0",
     "watch": "1.0.2"
   },
