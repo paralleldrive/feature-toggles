@@ -35,7 +35,7 @@
   },
   "dependencies": {
     "lodash": "4.17.19",
-    "ramda": "0.27.0",
+    "ramda": "0.27.1",
     "url-parse": "1.4.7"
   },
   "pre-commit": [
