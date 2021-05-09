@@ -34,7 +34,7 @@
     "watch": "1.0.2"
   },
   "dependencies": {
-    "lodash": "4.17.20",
+    "lodash": "4.17.21",
     "ramda": "0.27.1",
     "url-parse": "1.4.7"
   },
