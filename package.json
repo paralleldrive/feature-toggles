@@ -28,13 +28,13 @@
     "pretty-quick": "1.11.1",
     "prop-types": "15.7.2",
     "riteway": "2.0.8",
-    "supertest": "4.0.2",
+    "supertest": "6.3.3",
     "tape": "4.13.3",
     "updtr": "3.1.0",
     "watch": "1.0.2"
   },
   "dependencies": {
-    "lodash": "4.17.21",
+    "lodash": "4.17.20",
     "ramda": "0.27.1",
     "url-parse": "1.4.7"
   },
