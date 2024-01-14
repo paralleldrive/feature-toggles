@@ -28,7 +28,7 @@
     "pretty-quick": "1.11.1",
     "prop-types": "15.7.2",
     "riteway": "2.0.8",
-    "supertest": "4.0.2",
+    "supertest": "6.3.4",
     "tape": "4.13.3",
     "updtr": "3.1.0",
     "watch": "1.0.2"
