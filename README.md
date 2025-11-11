@@ -1,8 +1,7 @@
 # feature-toggles
+[![SudoLang AIDD](https://img.shields.io/badge/✨_SudoLang_AIDD-black)](https://github.com/paralleldrive/aidd)[![Known Vulnerabilities](https://snyk.io/test/github/paralleldrive/feature-toggles/badge.svg?targetFile=package.json)](https://snyk.io/test/github/paralleldrive/feature-toggles?targetFile=package.json)
 
 Low-level feature toggle tools for Node and browsers.
-
-[![Known Vulnerabilities](https://snyk.io/test/github/paralleldrive/feature-toggles/badge.svg?targetFile=package.json)](https://snyk.io/test/github/paralleldrive/feature-toggles?targetFile=package.json)
 
 ## Install
 
