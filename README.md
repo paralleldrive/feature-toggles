@@ -31,7 +31,7 @@ const initialFeatures = [
     isActive: false
   },
   {
-    name: 'help'
+    name: 'help',
     isActive: false
   }
 ];
